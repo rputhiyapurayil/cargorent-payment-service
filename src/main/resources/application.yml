@@ -1,0 +1,30 @@
+server:
+  port: ${PORT:8084}
+
+spring:
+  application:
+    name: cargorent-payment-service
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/cargorent_payments?createDatabaseIfNotExist=true&serverTimezone=Asia/Kolkata
+    username: ${DB_USER:cargorent}
+    password: ${DB_PASSWORD:cargorent}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+services:
+  booking:
+    url: ${BOOKING_SERVICE_URL:http://localhost:8083}
+
+cargorent:
+  company:
+    name: CarGoRent Vehicle Rentals
+    address: MG Road, Kochi, Kerala 682016
+    email: support@cargorent.example
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
